@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" xml:lang="en-US" tag-format="semantics/1.0" root="root">
+	<tag> var foodsize ="medium"; </tag> 
+	<!-- var required since foodsize not declared yet -->
+
+	<rule id="drink" scope="public">
+		<item repeat="0-1">
+			<ruleref uri="#foodsize"/>
+			<tag>foodsize = rules.foodsize</tag>
+		</item>
+		<ruleref uri="#kindofdrink"/>
+		<tag> out.drinksize=foodsize; out.type=rules.kindofdrink; </tag>
+	</rule>
+	<rule id="foodsize">
+		<one-of>
+			<item> small </item>
+			<item> medium </item>
+			<item> large </item>
+			<item xml:lang="pl-PL"> mała </item>
+			<item xml:lang="pl-PL"> duża </item>
+		</one-of>
+	</rule>
+	<rule id="kindofdrink">
+		<one-of>	
+			<item> coke </item>
+			<item> pepsi </item>
+			<item xml:lang="pl-PL"> herbata </item>
+		</one-of>
+	</rule>
+
+	<rule id="root">
+		<one-of>
+			<item repeat="1-">
+				<ruleref special="GARBAGE"/>
+				<ruleref uri="#drink"/>
+				<ruleref special="GARBAGE"/>
+			</item>
+			<item>
+				<ruleref special="GARBAGE"/>
+			</item>
+		</one-of>
+	</rule>
+</grammar>
+

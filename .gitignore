@@ -10,3 +10,16 @@
 *.lai
 *.la
 *.a
+/nbproject/private/
+
+# NetBeans project dir
+/nbproject/
+# cmake files
+/CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+src/*.so.*
+src/*.so
+*/CMakeFiles/*
+/build/
